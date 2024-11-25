@@ -33,27 +33,33 @@
       RegisterButton = new Button();
       LogGroupBox = new GroupBox();
       UserConnectGroupbox = new GroupBox();
+      SignInMenuButton = new Button();
+      UserLogInDataGridView = new DataGridView();
       PaswdLoginLabel = new Label();
       UIDLoginLabel = new Label();
       UserLoginButton = new Button();
       UserPsswTextBox = new TextBox();
       UserIdTextBox = new TextBox();
       UserRegisterGroupBox = new GroupBox();
+      UserRegisterButton = new Button();
+      SignUpMenuButton = new Button();
+      UserSignUpDataGridView = new DataGridView();
       EmailRegisterLabel = new Label();
       PswRegisterdLabel = new Label();
       UIDRegisterLabel = new Label();
-      UserRegisterButton = new Button();
       UserEmailRegisterTextBox = new TextBox();
       UserPswdRegisterTextBox = new TextBox();
       UserIdRegisterTextBox = new TextBox();
       LogGroupBox.SuspendLayout();
       UserConnectGroupbox.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)UserLogInDataGridView).BeginInit();
       UserRegisterGroupBox.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)UserSignUpDataGridView).BeginInit();
       SuspendLayout();
       // 
       // LogInButton
       // 
-      LogInButton.Location = new Point(69, 130);
+      LogInButton.Location = new Point(104, 180);
       LogInButton.Name = "LogInButton";
       LogInButton.Size = new Size(166, 57);
       LogInButton.TabIndex = 0;
@@ -63,7 +69,7 @@
       // 
       // RegisterButton
       // 
-      RegisterButton.Location = new Point(69, 32);
+      RegisterButton.Location = new Point(104, 79);
       RegisterButton.Name = "RegisterButton";
       RegisterButton.Size = new Size(166, 57);
       RegisterButton.TabIndex = 1;
@@ -75,25 +81,45 @@
       // 
       LogGroupBox.Controls.Add(RegisterButton);
       LogGroupBox.Controls.Add(LogInButton);
-      LogGroupBox.Location = new Point(47, 61);
+      LogGroupBox.Location = new Point(12, 12);
       LogGroupBox.Name = "LogGroupBox";
-      LogGroupBox.Size = new Size(304, 213);
+      LogGroupBox.Size = new Size(374, 310);
       LogGroupBox.TabIndex = 2;
       LogGroupBox.TabStop = false;
       // 
       // UserConnectGroupbox
       // 
+      UserConnectGroupbox.Controls.Add(SignInMenuButton);
+      UserConnectGroupbox.Controls.Add(UserLogInDataGridView);
       UserConnectGroupbox.Controls.Add(PaswdLoginLabel);
       UserConnectGroupbox.Controls.Add(UIDLoginLabel);
       UserConnectGroupbox.Controls.Add(UserLoginButton);
       UserConnectGroupbox.Controls.Add(UserPsswTextBox);
       UserConnectGroupbox.Controls.Add(UserIdTextBox);
-      UserConnectGroupbox.Location = new Point(47, 61);
+      UserConnectGroupbox.Location = new Point(12, 12);
       UserConnectGroupbox.Name = "UserConnectGroupbox";
-      UserConnectGroupbox.Size = new Size(304, 213);
+      UserConnectGroupbox.Size = new Size(374, 310);
       UserConnectGroupbox.TabIndex = 3;
       UserConnectGroupbox.TabStop = false;
       UserConnectGroupbox.Visible = false;
+      // 
+      // SignInMenuButton
+      // 
+      SignInMenuButton.Location = new Point(258, 107);
+      SignInMenuButton.Name = "SignInMenuButton";
+      SignInMenuButton.Size = new Size(93, 23);
+      SignInMenuButton.TabIndex = 6;
+      SignInMenuButton.Text = "Menu";
+      SignInMenuButton.UseVisualStyleBackColor = true;
+      SignInMenuButton.Click += RetourMenuConnexionButton;
+      // 
+      // UserLogInDataGridView
+      // 
+      UserLogInDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      UserLogInDataGridView.Location = new Point(6, 166);
+      UserLogInDataGridView.Name = "UserLogInDataGridView";
+      UserLogInDataGridView.Size = new Size(345, 136);
+      UserLogInDataGridView.TabIndex = 5;
       // 
       // PaswdLoginLabel
       // 
@@ -115,9 +141,9 @@
       // 
       // UserLoginButton
       // 
-      UserLoginButton.Location = new Point(59, 152);
+      UserLoginButton.Location = new Point(258, 53);
       UserLoginButton.Name = "UserLoginButton";
-      UserLoginButton.Size = new Size(186, 35);
+      UserLoginButton.Size = new Size(93, 48);
       UserLoginButton.TabIndex = 2;
       UserLoginButton.Text = "Se connecter";
       UserLoginButton.UseVisualStyleBackColor = true;
@@ -147,19 +173,53 @@
       // 
       // UserRegisterGroupBox
       // 
+      UserRegisterGroupBox.Controls.Add(UserRegisterButton);
+      UserRegisterGroupBox.Controls.Add(SignUpMenuButton);
+      UserRegisterGroupBox.Controls.Add(UserSignUpDataGridView);
       UserRegisterGroupBox.Controls.Add(EmailRegisterLabel);
       UserRegisterGroupBox.Controls.Add(PswRegisterdLabel);
       UserRegisterGroupBox.Controls.Add(UIDRegisterLabel);
-      UserRegisterGroupBox.Controls.Add(UserRegisterButton);
       UserRegisterGroupBox.Controls.Add(UserEmailRegisterTextBox);
       UserRegisterGroupBox.Controls.Add(UserPswdRegisterTextBox);
       UserRegisterGroupBox.Controls.Add(UserIdRegisterTextBox);
-      UserRegisterGroupBox.Location = new Point(47, 64);
+      UserRegisterGroupBox.Location = new Point(12, 12);
       UserRegisterGroupBox.Name = "UserRegisterGroupBox";
-      UserRegisterGroupBox.Size = new Size(304, 206);
+      UserRegisterGroupBox.Size = new Size(374, 310);
       UserRegisterGroupBox.TabIndex = 4;
       UserRegisterGroupBox.TabStop = false;
       UserRegisterGroupBox.Visible = false;
+      // 
+      // UserRegisterButton
+      // 
+      UserRegisterButton.Location = new Point(258, 53);
+      UserRegisterButton.Name = "UserRegisterButton";
+      UserRegisterButton.Size = new Size(93, 46);
+      UserRegisterButton.TabIndex = 3;
+      UserRegisterButton.Text = "Créer un compte";
+      UserRegisterButton.UseVisualStyleBackColor = true;
+      UserRegisterButton.Click += UserRegisterButton_Click;
+      // 
+      // SignUpMenuButton
+      // 
+      SignUpMenuButton.Location = new Point(258, 107);
+      SignUpMenuButton.Name = "SignUpMenuButton";
+      SignUpMenuButton.Size = new Size(93, 23);
+      SignUpMenuButton.TabIndex = 7;
+      SignUpMenuButton.Text = "Menu";
+      SignUpMenuButton.UseVisualStyleBackColor = true;
+      SignUpMenuButton.Click += RetourMenuConnexionButton;
+      // 
+      // UserSignUpDataGridView
+      // 
+      UserSignUpDataGridView.AllowUserToAddRows = false;
+      UserSignUpDataGridView.AllowUserToDeleteRows = false;
+      UserSignUpDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      UserSignUpDataGridView.Location = new Point(6, 166);
+      UserSignUpDataGridView.Name = "UserSignUpDataGridView";
+      UserSignUpDataGridView.ReadOnly = true;
+      UserSignUpDataGridView.Size = new Size(345, 136);
+      UserSignUpDataGridView.TabIndex = 7;
+      UserSignUpDataGridView.TabStop = false;
       // 
       // EmailRegisterLabel
       // 
@@ -187,16 +247,6 @@
       UIDRegisterLabel.Size = new Size(99, 15);
       UIDRegisterLabel.TabIndex = 4;
       UIDRegisterLabel.Text = "Nom d'utilisateur";
-      // 
-      // UserRegisterButton
-      // 
-      UserRegisterButton.Location = new Point(214, 76);
-      UserRegisterButton.Name = "UserRegisterButton";
-      UserRegisterButton.Size = new Size(75, 46);
-      UserRegisterButton.TabIndex = 3;
-      UserRegisterButton.Text = "Créer un compte";
-      UserRegisterButton.UseVisualStyleBackColor = true;
-      UserRegisterButton.Click += UserRegisterButton_Click;
       // 
       // UserEmailRegisterTextBox
       // 
@@ -235,8 +285,8 @@
       AutoScaleDimensions = new SizeF(7F, 15F);
       AutoScaleMode = AutoScaleMode.Font;
       ClientSize = new Size(398, 334);
-      Controls.Add(UserConnectGroupbox);
       Controls.Add(UserRegisterGroupBox);
+      Controls.Add(UserConnectGroupbox);
       Controls.Add(LogGroupBox);
       Icon = (Icon)resources.GetObject("$this.Icon");
       Name = "UserAccountForm";
@@ -244,8 +294,10 @@
       LogGroupBox.ResumeLayout(false);
       UserConnectGroupbox.ResumeLayout(false);
       UserConnectGroupbox.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)UserLogInDataGridView).EndInit();
       UserRegisterGroupBox.ResumeLayout(false);
       UserRegisterGroupBox.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)UserSignUpDataGridView).EndInit();
       ResumeLayout(false);
     }
 
@@ -268,5 +320,9 @@
     private Label EmailRegisterLabel;
     private Label UIDLoginLabel;
     private Label PaswdLoginLabel;
+    private DataGridView UserSignUpDataGridView;
+    private DataGridView UserLogInDataGridView;
+    private Button SignInMenuButton;
+    private Button SignUpMenuButton;
   }
 }

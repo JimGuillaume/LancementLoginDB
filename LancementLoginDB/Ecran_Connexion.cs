@@ -105,5 +105,12 @@ namespace LancementLoginDB
 
       }
     }
+
+    private void RetourMenuConnexionButton(object sender, EventArgs e)
+    {
+      this.UserRegisterGroupBox.Visible = false;
+      this.UserConnectGroupbox.Visible = false;
+      this.LogGroupBox.Visible = true;
+    }
   }
 }
