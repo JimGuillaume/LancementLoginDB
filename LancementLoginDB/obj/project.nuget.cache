@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "21UVRKcKDqM=",
+  "dgSpecHash": "ZDhk7x4yJ9A=",
   "success": true,
   "projectFilePath": "C:\\Users\\jimgu\\Desktop\\Projets\\C#\\LancementLoginDB\\LancementLoginDB\\LancementLoginDB.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jimgu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\jimgu\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\jimgu\\.nuget\\packages\\npgsql\\9.0.1\\npgsql.9.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
