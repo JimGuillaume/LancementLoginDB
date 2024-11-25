@@ -33,6 +33,8 @@
       RegisterButton = new Button();
       LogGroupBox = new GroupBox();
       UserConnectGroupbox = new GroupBox();
+      PaswdLoginLabel = new Label();
+      UIDLoginLabel = new Label();
       UserLoginButton = new Button();
       UserPsswTextBox = new TextBox();
       UserIdTextBox = new TextBox();
@@ -81,6 +83,8 @@
       // 
       // UserConnectGroupbox
       // 
+      UserConnectGroupbox.Controls.Add(PaswdLoginLabel);
+      UserConnectGroupbox.Controls.Add(UIDLoginLabel);
       UserConnectGroupbox.Controls.Add(UserLoginButton);
       UserConnectGroupbox.Controls.Add(UserPsswTextBox);
       UserConnectGroupbox.Controls.Add(UserIdTextBox);
@@ -90,6 +94,24 @@
       UserConnectGroupbox.TabIndex = 3;
       UserConnectGroupbox.TabStop = false;
       UserConnectGroupbox.Visible = false;
+      // 
+      // PaswdLoginLabel
+      // 
+      PaswdLoginLabel.AutoSize = true;
+      PaswdLoginLabel.Location = new Point(114, 87);
+      PaswdLoginLabel.Name = "PaswdLoginLabel";
+      PaswdLoginLabel.Size = new Size(77, 15);
+      PaswdLoginLabel.TabIndex = 4;
+      PaswdLoginLabel.Text = "Mot de passe";
+      // 
+      // UIDLoginLabel
+      // 
+      UIDLoginLabel.AutoSize = true;
+      UIDLoginLabel.Location = new Point(107, 37);
+      UIDLoginLabel.Name = "UIDLoginLabel";
+      UIDLoginLabel.Size = new Size(90, 15);
+      UIDLoginLabel.TabIndex = 3;
+      UIDLoginLabel.Text = "Nom Utilisateur";
       // 
       // UserLoginButton
       // 
@@ -106,9 +128,11 @@
       UserPsswTextBox.Name = "UserPsswTextBox";
       UserPsswTextBox.Size = new Size(186, 23);
       UserPsswTextBox.TabIndex = 1;
-      UserPsswTextBox.Text = "Mot de passe";
       UserPsswTextBox.TextAlign = HorizontalAlignment.Center;
+      UserPsswTextBox.UseSystemPasswordChar = true;
       UserPsswTextBox.TextChanged += UserPsswTextBox_TextChanged;
+      UserPsswTextBox.Enter += EnterTextBox;
+      UserPsswTextBox.Leave += LeaveTextBox;
       // 
       // UserIdTextBox
       // 
@@ -116,9 +140,10 @@
       UserIdTextBox.Name = "UserIdTextBox";
       UserIdTextBox.Size = new Size(186, 23);
       UserIdTextBox.TabIndex = 0;
-      UserIdTextBox.Text = "Nom Utilisateur";
       UserIdTextBox.TextAlign = HorizontalAlignment.Center;
       UserIdTextBox.TextChanged += UserIdTextBox_TextChanged;
+      UserIdTextBox.Enter += EnterTextBox;
+      UserIdTextBox.Leave += LeaveTextBox;
       // 
       // UserRegisterGroupBox
       // 
@@ -180,6 +205,8 @@
       UserEmailRegisterTextBox.Size = new Size(185, 23);
       UserEmailRegisterTextBox.TabIndex = 2;
       UserEmailRegisterTextBox.TextAlign = HorizontalAlignment.Center;
+      UserEmailRegisterTextBox.Enter += EnterTextBox;
+      UserEmailRegisterTextBox.Leave += LeaveTextBox;
       // 
       // UserPswdRegisterTextBox
       // 
@@ -188,6 +215,10 @@
       UserPswdRegisterTextBox.Size = new Size(186, 23);
       UserPswdRegisterTextBox.TabIndex = 1;
       UserPswdRegisterTextBox.TextAlign = HorizontalAlignment.Center;
+      UserPswdRegisterTextBox.UseSystemPasswordChar = true;
+      UserPswdRegisterTextBox.TextChanged += UserPswdRegisterTextBox_TextChanged;
+      UserPswdRegisterTextBox.Enter += EnterTextBox;
+      UserPswdRegisterTextBox.Leave += LeaveTextBox;
       // 
       // UserIdRegisterTextBox
       // 
@@ -196,15 +227,17 @@
       UserIdRegisterTextBox.Size = new Size(186, 23);
       UserIdRegisterTextBox.TabIndex = 0;
       UserIdRegisterTextBox.TextAlign = HorizontalAlignment.Center;
+      UserIdRegisterTextBox.Enter += EnterTextBox;
+      UserIdRegisterTextBox.Leave += LeaveTextBox;
       // 
       // UserAccountForm
       // 
       AutoScaleDimensions = new SizeF(7F, 15F);
       AutoScaleMode = AutoScaleMode.Font;
       ClientSize = new Size(398, 334);
+      Controls.Add(UserConnectGroupbox);
       Controls.Add(UserRegisterGroupBox);
       Controls.Add(LogGroupBox);
-      Controls.Add(UserConnectGroupbox);
       Icon = (Icon)resources.GetObject("$this.Icon");
       Name = "UserAccountForm";
       Text = "Connexion";
@@ -233,5 +266,7 @@
     private Label UIDRegisterLabel;
     private Label PswRegisterdLabel;
     private Label EmailRegisterLabel;
+    private Label UIDLoginLabel;
+    private Label PaswdLoginLabel;
   }
 }

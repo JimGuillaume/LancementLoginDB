@@ -51,26 +51,59 @@ namespace LancementLoginDB
       }
       catch (UserSignUpException exc)
       {
-        MessageBox.Show(exc.message, "ERREUR ENCODAGE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        switch(exc.errorCode)
+        MessageBox.Show(exc.message, "ERREUR ENCODAGE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        switch (exc.errorCode)
         {
           case 1:
           case 2:
           case 3:
             this.UserIdRegisterTextBox.Focus();
             this.UserIdRegisterTextBox.SelectAll();
+            this.UserIdRegisterTextBox.BackColor = Color.LightPink;
             break;
 
-          case 4:
-          case 5:
-          case 6:
+          case 10:
+          case 11:
             this.UserPswdRegisterTextBox.Focus();
             this.UserPswdRegisterTextBox.SelectAll();
+            this.UserPswdRegisterTextBox.BackColor = Color.LightPink;
             break;
+
+          case 20:
+          case 21:
+            this.UserEmailRegisterTextBox.Focus();
+            this.UserEmailRegisterTextBox.SelectAll();
+            this.UserEmailRegisterTextBox.BackColor = Color.LightPink;
+            break;
+
+          default:
+            MessageBox.Show("Error 1C", "ERREUR ENCODAGE INSCRIPTION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            break;
+
 
         }
       }
 
+    }
+
+    private void UserPswdRegisterTextBox_TextChanged(object sender, EventArgs e)
+    {
+    }
+
+    private void EnterTextBox(object sender, EventArgs e)
+    {
+      if (sender is TextBox)
+      {
+        ((TextBox)sender).BackColor = Color.AliceBlue;
+      }
+    }
+    private void LeaveTextBox(object sender, EventArgs e)
+    {
+      if (sender is TextBox)
+      {
+        ((TextBox)sender).BackColor = Color.White;
+
+      }
     }
   }
 }
