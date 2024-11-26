@@ -17,11 +17,6 @@
     //CONSTRUCTOR  & DESTRUCTOR
     public UserSignUp() => DefaultUser();
 
-    ~UserSignUp()
-    {
-
-    }
-
 
     // ALL THE SET
     public void Set_UID(string t_UID)

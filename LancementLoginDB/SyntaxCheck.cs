@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LancementLoginDB
+﻿namespace LancementLoginDB
 {
   internal class SyntaxCheck
   {
@@ -14,10 +7,7 @@ namespace LancementLoginDB
     {
 
     }
-    ~SyntaxCheck()
-    {
 
-    }
     public string UIDCheck(string t_UID, int CheckType) // Non Null // Lenght 3 - 25 // LetterOrDigit //
     {
       switch (CheckType) // 1 = SignUp // 2 = SignIn
@@ -93,7 +83,7 @@ namespace LancementLoginDB
     }
 
 
-    public string EmailCheck(string t_Email, int CheckType)
+    public string EmailCheck(string t_Email, int v)
     {
       if (string.IsNullOrWhiteSpace(t_Email))
       {

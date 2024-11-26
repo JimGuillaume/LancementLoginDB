@@ -3,7 +3,6 @@ namespace LancementLoginDB
   public partial class UserAccountForm : Form
   {
 
-    private List<UserSignUp> SendUserAccount = [];
     public UserAccountForm()
     {
       InitializeComponent();
@@ -40,14 +39,23 @@ namespace LancementLoginDB
     {
       try
       {
-        UserSignUp inter_user = new UserSignUp();
+        UserSignUp inter_user = new();
 
+
+        //  GESTION TEMPORAIRE DE  LUTILISATEUR
         inter_user.Set_UID(this.UserIdRegisterTextBox.Text);
         inter_user.Set_UPSWD(this.UserPswdRegisterTextBox.Text);
         inter_user.Set_UMail(this.UserEmailRegisterTextBox.Text);
 
-        DBSignUpSignIn dBSignUpSignIn = new DBSignUpSignIn();
+
+        //CREATION DE L UTILISATEUR SUR LA DB
+        DBSignUpSignIn dBSignUpSignIn = new();
         dBSignUpSignIn.UserSignUp(inter_user.Get_UID(), inter_user.Get_UPSWD(), inter_user.Get_UMail());
+
+        //CLEAR DES CHAMPS TEXTUELS
+        this.UserIdRegisterTextBox.Clear();
+        this.UserPswdRegisterTextBox.Clear();
+        this.UserEmailRegisterTextBox.Clear();
       }
       catch (UserSignUpException exc)
       {
@@ -89,16 +97,16 @@ namespace LancementLoginDB
 
     private void EnterTextBox(object sender, EventArgs e)
     {
-      if (sender is TextBox)
+      if (sender is TextBox box)
       {
-        ((TextBox)sender).BackColor = Color.AliceBlue;
+        box.BackColor = Color.AliceBlue;
       }
     }
     private void LeaveTextBox(object sender, EventArgs e)
     {
-      if (sender is TextBox)
+      if (sender is TextBox box)
       {
-        ((TextBox)sender).BackColor = Color.White;
+        box.BackColor = Color.White;
 
       }
     }
