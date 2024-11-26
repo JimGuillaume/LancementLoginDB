@@ -36,7 +36,6 @@ namespace LancementLoginDB
     {
 
     }
-
     private void UserRegisterButton_Click(object sender, EventArgs e)
     {
       try
@@ -47,7 +46,8 @@ namespace LancementLoginDB
         inter_user.Set_UPSWD(this.UserPswdRegisterTextBox.Text);
         inter_user.Set_UMail(this.UserEmailRegisterTextBox.Text);
 
-        this.SendUserAccount.Add(inter_user);
+        DBSignUpSignIn dBSignUpSignIn = new DBSignUpSignIn();
+        dBSignUpSignIn.UserSignUp(inter_user.Get_UID(), inter_user.Get_UPSWD(), inter_user.Get_UMail());
       }
       catch (UserSignUpException exc)
       {
@@ -79,11 +79,8 @@ namespace LancementLoginDB
           default:
             MessageBox.Show("Error 1C", "ERREUR ENCODAGE INSCRIPTION", MessageBoxButtons.OK, MessageBoxIcon.Error);
             break;
-
-
         }
       }
-
     }
 
     private void UserPswdRegisterTextBox_TextChanged(object sender, EventArgs e)
@@ -111,26 +108,6 @@ namespace LancementLoginDB
       this.UserRegisterGroupBox.Visible = false;
       this.UserConnectGroupbox.Visible = false;
       this.LogGroupBox.Visible = true;
-    }
-
-    private void UserPswdRegisterTextBox_TextChanged(object sender, EventArgs e)
-    {
-    }
-
-    private void EnterTextBox(object sender, EventArgs e)
-    {
-      if (sender is TextBox)
-      {
-        ((TextBox)sender).BackColor = Color.AliceBlue;
-      }
-    }
-    private void LeaveTextBox(object sender, EventArgs e)
-    {
-      if (sender is TextBox)
-      {
-        ((TextBox)sender).BackColor = Color.White;
-
-      }
     }
   }
 }

@@ -33,8 +33,6 @@
       RegisterButton = new Button();
       LogGroupBox = new GroupBox();
       UserConnectGroupbox = new GroupBox();
-      PaswdLoginLabel = new Label();
-      UIDLoginLabel = new Label();
       SignInMenuButton = new Button();
       UserLogInDataGridView = new DataGridView();
       PaswdLoginLabel = new Label();
@@ -91,6 +89,10 @@
       // 
       // UserConnectGroupbox
       // 
+      UserConnectGroupbox.Controls.Add(SignInMenuButton);
+      UserConnectGroupbox.Controls.Add(UserLogInDataGridView);
+      UserConnectGroupbox.Controls.Add(PaswdLoginLabel);
+      UserConnectGroupbox.Controls.Add(UIDLoginLabel);
       UserConnectGroupbox.Controls.Add(UserLoginButton);
       UserConnectGroupbox.Controls.Add(UserPsswTextBox);
       UserConnectGroupbox.Controls.Add(UserIdTextBox);
@@ -100,6 +102,42 @@
       UserConnectGroupbox.TabIndex = 3;
       UserConnectGroupbox.TabStop = false;
       UserConnectGroupbox.Visible = false;
+      // 
+      // SignInMenuButton
+      // 
+      SignInMenuButton.Location = new Point(258, 107);
+      SignInMenuButton.Name = "SignInMenuButton";
+      SignInMenuButton.Size = new Size(93, 23);
+      SignInMenuButton.TabIndex = 6;
+      SignInMenuButton.Text = "Menu";
+      SignInMenuButton.UseVisualStyleBackColor = true;
+      SignInMenuButton.Click += RetourMenuConnexionButton;
+      // 
+      // UserLogInDataGridView
+      // 
+      UserLogInDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      UserLogInDataGridView.Location = new Point(6, 166);
+      UserLogInDataGridView.Name = "UserLogInDataGridView";
+      UserLogInDataGridView.Size = new Size(345, 136);
+      UserLogInDataGridView.TabIndex = 5;
+      // 
+      // PaswdLoginLabel
+      // 
+      PaswdLoginLabel.AutoSize = true;
+      PaswdLoginLabel.Location = new Point(114, 87);
+      PaswdLoginLabel.Name = "PaswdLoginLabel";
+      PaswdLoginLabel.Size = new Size(77, 15);
+      PaswdLoginLabel.TabIndex = 4;
+      PaswdLoginLabel.Text = "Mot de passe";
+      // 
+      // UIDLoginLabel
+      // 
+      UIDLoginLabel.AutoSize = true;
+      UIDLoginLabel.Location = new Point(107, 37);
+      UIDLoginLabel.Name = "UIDLoginLabel";
+      UIDLoginLabel.Size = new Size(90, 15);
+      UIDLoginLabel.TabIndex = 3;
+      UIDLoginLabel.Text = "Nom Utilisateur";
       // 
       // UserLoginButton
       // 
@@ -247,7 +285,6 @@
       AutoScaleDimensions = new SizeF(7F, 15F);
       AutoScaleMode = AutoScaleMode.Font;
       ClientSize = new Size(398, 334);
-      Controls.Add(UserConnectGroupbox);
       Controls.Add(UserRegisterGroupBox);
       Controls.Add(UserConnectGroupbox);
       Controls.Add(LogGroupBox);
@@ -281,5 +318,11 @@
     private Label UIDRegisterLabel;
     private Label PswRegisterdLabel;
     private Label EmailRegisterLabel;
+    private Label UIDLoginLabel;
+    private Label PaswdLoginLabel;
+    private DataGridView UserSignUpDataGridView;
+    private DataGridView UserLogInDataGridView;
+    private Button SignInMenuButton;
+    private Button SignUpMenuButton;
   }
 }

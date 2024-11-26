@@ -100,10 +100,16 @@ namespace LancementLoginDB
         throw new UserSignUpException(20, "L'adresse e-mail ne peut pas être vide");
       }
 
-      var addr = new System.Net.Mail.MailAddress(t_Email);
-      if (!(addr.Address == t_Email))
+      try
+      {
+
+        var addr = new System.Net.Mail.MailAddress(t_Email);
+
+      }
+      catch (Exception)
       {
         throw new UserSignUpException(21, "L'adresse e-mail n'est pas valide");
+        throw;
       }
       return t_Email;
     }
