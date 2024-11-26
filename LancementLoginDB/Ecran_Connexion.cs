@@ -42,12 +42,21 @@ namespace LancementLoginDB
       {
         UserSignUp inter_user = new UserSignUp();
 
+
+        //  GESTION TEMPORAIRE DE  LUTILISATEUR
         inter_user.Set_UID(this.UserIdRegisterTextBox.Text);
         inter_user.Set_UPSWD(this.UserPswdRegisterTextBox.Text);
         inter_user.Set_UMail(this.UserEmailRegisterTextBox.Text);
 
+
+        //CREATION DE L UTILISATEUR SUR LA DB
         DBSignUpSignIn dBSignUpSignIn = new DBSignUpSignIn();
         dBSignUpSignIn.UserSignUp(inter_user.Get_UID(), inter_user.Get_UPSWD(), inter_user.Get_UMail());
+
+        //CLEAR DES CHAMPS TEXTUELS
+        this.UserIdRegisterTextBox.Clear();
+        this.UserPswdRegisterTextBox.Clear();
+        this.UserEmailRegisterTextBox.Clear();
       }
       catch (UserSignUpException exc)
       {

@@ -1,9 +1,4 @@
 ﻿using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LancementLoginDB
 {
@@ -12,13 +7,12 @@ namespace LancementLoginDB
     private NpgsqlConnection ConnectToDb()
     {
       //Set TempUser + Password to DB
-      var connectionString = "Host=pg-309a4596-jimguillaume99-appcreationcompte.b.aivencloud.com;Username=avnadmin;Password=AVNS_KdDnmlQQIDbFzQR8iPA;Database=defaultdb";
+      var connectionString = "Host=pg-309a4596-jimguillaume99-appcreationcompte.b.aivencloud.com;Port=26257;Username=avnadmin;Password=AVNS_KdDnmlQQIDbFzQR8iPA;Database=defaultdb";
       NpgsqlConnection conn = new NpgsqlConnection(connectionString);
 
       //Open the Db Connection
-
-      //TODO ERROR TIMEOUT
       conn.Open();
+
       return conn;
     }
 
@@ -35,19 +29,34 @@ namespace LancementLoginDB
 
     public void UserSignUp(string UID, string Password, string eMail)
     {
-      string SignUpQuery = "INSERT INTO user(username, password, email) VALUES(@UID, @Password, @eMail)";
+
+      //SIGNUP USER INTO USERLIST
+      string SignUpQuery = "INSERT INTO public.UserList (username, email) VALUES(@UID, @eMail)";
       using (NpgsqlCommand cmd = new NpgsqlCommand(SignUpQuery, ConnectToDb()))
       {
         cmd.Parameters.AddWithValue("@UID", UID);
-        cmd.Parameters.AddWithValue("@Password", Password);
         cmd.Parameters.AddWithValue("@eMail", eMail);
         cmd.ExecuteNonQuery();
       }
+
     }
+
+    private void UserPasswordSignUp(string UID, string Password)
+    {
+      string UserPasswordSignUp = "INSERT INTO public.PasswordList() VALUES()";
+      using (NpgsqlCommand cmd = new NpgsqlCommand(UserPasswordSignUp, ConnectToDb()))
+      {
+        cmd.Parameters.AddWithValue("@UID", UID);
+        //TODO ADD FCT THAT HASH THE PASSWORD
+      /*  cmd.Parameters.AddWithValue("@Password", HashPASSWORD);
+        cmd.Parameters.AddWithValue("@Hash", GetHash ); */
+      }
+    }
+
 
     public void UserLogIn(string UID, string Password)
     {
-      string SignInQuery = "SELECT * FROM user(username, password) WHERE username = '@UID' AND password = '@Password'";
+      string SignInQuery = "SELECT * FROM public.usersList(username, password) WHERE username = '@UID' AND password = '@Password'";
       using (NpgsqlCommand cmd = new NpgsqlCommand(SignInQuery, ConnectToDb()))
       {
         cmd.Parameters.AddWithValue("@UID", UID);

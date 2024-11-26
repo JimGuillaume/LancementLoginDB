@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LancementLoginDB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1733a348469df40d46507bcaca959828805e52ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+835530f96f21e79701d6165c0e73a442504a1e58")]
 [assembly: System.Reflection.AssemblyProductAttribute("LancementLoginDB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LancementLoginDB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
