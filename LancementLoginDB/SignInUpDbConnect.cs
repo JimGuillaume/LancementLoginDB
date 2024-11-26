@@ -33,9 +33,10 @@ namespace LancementLoginDB
       //SIGNUP USER INTO USERLIST
       string SignUpQuery = "INSERT INTO public.UserList (username, email) VALUES(@UID, @eMail)";
       using NpgsqlCommand cmd = new(SignUpQuery, ConnectToDb());
-      cmd.Parameters.AddWithValue("@UID", UID);
-      cmd.Parameters.AddWithValue("@eMail", eMail);
-      cmd.ExecuteNonQuery();
+        cmd.Parameters.AddWithValue("@UID", UID);
+        cmd.Parameters.AddWithValue("@eMail", eMail);
+        cmd.ExecuteNonQuery();
+      }
 
     }
 
@@ -56,8 +57,9 @@ namespace LancementLoginDB
     {
       string SignInQuery = "SELECT * FROM public.usersList(username, password) WHERE username = '@UID' AND password = '@Password'";
       using NpgsqlCommand cmd = new (SignInQuery, ConnectToDb());
-      cmd.Parameters.AddWithValue("@UID", UID);
-      cmd.Parameters.AddWithValue("@Password", Password);
+        cmd.Parameters.AddWithValue("@UID", UID);
+        cmd.Parameters.AddWithValue("@Password", Password);
+      }
     }
 
   }
