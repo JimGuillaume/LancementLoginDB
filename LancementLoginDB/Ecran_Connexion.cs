@@ -112,5 +112,25 @@ namespace LancementLoginDB
       this.UserConnectGroupbox.Visible = false;
       this.LogGroupBox.Visible = true;
     }
+
+    private void UserPswdRegisterTextBox_TextChanged(object sender, EventArgs e)
+    {
+    }
+
+    private void EnterTextBox(object sender, EventArgs e)
+    {
+      if (sender is TextBox)
+      {
+        ((TextBox)sender).BackColor = Color.AliceBlue;
+      }
+    }
+    private void LeaveTextBox(object sender, EventArgs e)
+    {
+      if (sender is TextBox)
+      {
+        ((TextBox)sender).BackColor = Color.White;
+
+      }
+    }
   }
 }
