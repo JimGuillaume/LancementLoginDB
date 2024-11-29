@@ -10,6 +10,6 @@ namespace LancementLoginDB
   {
     public string message = t_message;
 
-    public int errorCode = t_errorCode;
+    public int errorCode = t_errorCode; // 1 Mauvais MDP // 2 USER EXISTE PAS
   }
 }

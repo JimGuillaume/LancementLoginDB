@@ -36,11 +36,26 @@ namespace LancementLoginDB
     {
       SyntaxCheck PasswordCheck = new();
       this.Password = PasswordCheck.PasswordCheck(t_Password, 2);
-
-      //TODO CHECK IN THE DATABASE IF THE PASSWORD MATCH THE UID
     }
 
 
+    //ALL THE GET
 
+    public string getUID()
+    { 
+      return this.UID; 
+    }
+
+    public string getPSWD()
+    {
+      return this.Password;
+    }
+
+    //LOG IN FCT
+    public void LogIn(string UID, string Password)
+    {
+      DBSignUpSignIn UserLogIn = new();
+        UserLogIn.UserLogIn(this.UID, this.Password);
+    }
   }
 }

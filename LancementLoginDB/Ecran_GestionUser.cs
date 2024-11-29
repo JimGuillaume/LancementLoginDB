@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LancementLoginDB
 {
-  public partial class UserList : Form
+  public partial class Ecran_GestionUser : Form
   {
-    public UserList()
+    public Ecran_GestionUser()
     {
       InitializeComponent();
     }

@@ -34,7 +34,6 @@
       LogGroupBox = new GroupBox();
       UserConnectGroupbox = new GroupBox();
       SignInMenuButton = new Button();
-      UserLogInDataGridView = new DataGridView();
       PaswdLoginLabel = new Label();
       UIDLoginLabel = new Label();
       UserLoginButton = new Button();
@@ -52,7 +51,6 @@
       UserIdRegisterTextBox = new TextBox();
       LogGroupBox.SuspendLayout();
       UserConnectGroupbox.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)UserLogInDataGridView).BeginInit();
       UserRegisterGroupBox.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)UserSignUpDataGridView).BeginInit();
       SuspendLayout();
@@ -90,7 +88,6 @@
       // UserConnectGroupbox
       // 
       UserConnectGroupbox.Controls.Add(SignInMenuButton);
-      UserConnectGroupbox.Controls.Add(UserLogInDataGridView);
       UserConnectGroupbox.Controls.Add(PaswdLoginLabel);
       UserConnectGroupbox.Controls.Add(UIDLoginLabel);
       UserConnectGroupbox.Controls.Add(UserLoginButton);
@@ -112,14 +109,6 @@
       SignInMenuButton.Text = "Menu";
       SignInMenuButton.UseVisualStyleBackColor = true;
       SignInMenuButton.Click += RetourMenuConnexionButton;
-      // 
-      // UserLogInDataGridView
-      // 
-      UserLogInDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      UserLogInDataGridView.Location = new Point(6, 166);
-      UserLogInDataGridView.Name = "UserLogInDataGridView";
-      UserLogInDataGridView.Size = new Size(345, 136);
-      UserLogInDataGridView.TabIndex = 5;
       // 
       // PaswdLoginLabel
       // 
@@ -147,6 +136,7 @@
       UserLoginButton.TabIndex = 2;
       UserLoginButton.Text = "Se connecter";
       UserLoginButton.UseVisualStyleBackColor = true;
+      UserLoginButton.Click += UserLoginButton_Click;
       // 
       // UserPsswTextBox
       // 
@@ -294,7 +284,6 @@
       LogGroupBox.ResumeLayout(false);
       UserConnectGroupbox.ResumeLayout(false);
       UserConnectGroupbox.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)UserLogInDataGridView).EndInit();
       UserRegisterGroupBox.ResumeLayout(false);
       UserRegisterGroupBox.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)UserSignUpDataGridView).EndInit();
@@ -321,7 +310,6 @@
     private Label UIDLoginLabel;
     private Label PaswdLoginLabel;
     private DataGridView UserSignUpDataGridView;
-    private DataGridView UserLogInDataGridView;
     private Button SignInMenuButton;
     private Button SignUpMenuButton;
   }

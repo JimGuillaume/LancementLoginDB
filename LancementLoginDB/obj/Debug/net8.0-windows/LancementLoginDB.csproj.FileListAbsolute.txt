@@ -20,4 +20,4 @@ C:\Users\jimgu\Desktop\Projets\C#\LancementLoginDB\LancementLoginDB\bin\Debug\ne
 C:\Users\jimgu\Desktop\Projets\C#\LancementLoginDB\LancementLoginDB\bin\Debug\net8.0-windows\Npgsql.dll
 C:\Users\jimgu\Desktop\Projets\C#\LancementLoginDB\LancementLoginDB\obj\Debug\net8.0-windows\LancementLoginDB.csproj.AssemblyReference.cache
 C:\Users\jimgu\Desktop\Projets\C#\LancementLoginDB\LancementLoginDB\obj\Debug\net8.0-windows\Lancemen.6AA3C928.Up2Date
-C:\Users\jimgu\Desktop\Projets\C#\LancementLoginDB\LancementLoginDB\obj\Debug\net8.0-windows\LancementLoginDB.UserList.resources
+C:\Users\jimgu\Desktop\Projets\C#\LancementLoginDB\LancementLoginDB\obj\Debug\net8.0-windows\LancementLoginDB.Ecran_GestionUser.resources
