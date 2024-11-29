@@ -285,9 +285,9 @@
       AutoScaleDimensions = new SizeF(7F, 15F);
       AutoScaleMode = AutoScaleMode.Font;
       ClientSize = new Size(398, 334);
-      Controls.Add(UserRegisterGroupBox);
       Controls.Add(UserConnectGroupbox);
       Controls.Add(LogGroupBox);
+      Controls.Add(UserRegisterGroupBox);
       Icon = (Icon)resources.GetObject("$this.Icon");
       Name = "UserAccountForm";
       Text = "Connexion";

@@ -1,3 +1,6 @@
+using Npgsql;
+using System.Data;
+
 namespace LancementLoginDB
 {
   public partial class UserAccountForm : Form
@@ -12,12 +15,14 @@ namespace LancementLoginDB
     {
       this.LogGroupBox.Visible = false;
       this.UserConnectGroupbox.Visible = true;
+      AfficherDataGrid(UserLogInDataGridView);
     }
 
     private void RegisterButton_Click(object sender, EventArgs e)
     {
       this.LogGroupBox.Visible = false;
       this.UserRegisterGroupBox.Visible = true;
+      AfficherDataGrid(UserSignUpDataGridView);
 
     }
 
@@ -89,6 +94,8 @@ namespace LancementLoginDB
             break;
         }
       }
+      AfficherDataGrid(UserSignUpDataGridView);
+
     }
 
     private void UserPswdRegisterTextBox_TextChanged(object sender, EventArgs e)
@@ -109,6 +116,22 @@ namespace LancementLoginDB
         box.BackColor = Color.White;
 
       }
+    }
+
+
+    //Connexion a la DB Suivie d'une mise a jour des utilisateurs & eMail dans le DataGridView
+    private void AfficherDataGrid(DataGridView DataGrid)
+    {
+      DBSignUpSignIn dBSignUpSignIn = new();
+      DataTable DbSource = new();
+      
+
+      string SignInQuery = "SELECT username, email FROM public.UserList";
+      using NpgsqlCommand cmd = new(SignInQuery, dBSignUpSignIn.ConnectToDb());
+
+      NpgsqlDataAdapter adapter = new(cmd);
+      adapter.Fill(DbSource);
+      DataGrid.DataSource = DbSource;
     }
 
     private void RetourMenuConnexionButton(object sender, EventArgs e)

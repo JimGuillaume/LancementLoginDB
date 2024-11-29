@@ -4,7 +4,7 @@ namespace LancementLoginDB
 {
   public class DBSignUpSignIn
   {
-    private static NpgsqlConnection ConnectToDb()
+    public NpgsqlConnection ConnectToDb()
     {
       //Set TempUser + Password to DB
       var connectionString = "Host=pg-309a4596-jimguillaume99-appcreationcompte.b.aivencloud.com;Port=26257;Username=avnadmin;Password=AVNS_KdDnmlQQIDbFzQR8iPA;Database=defaultdb";
@@ -33,11 +33,9 @@ namespace LancementLoginDB
       //SIGNUP USER INTO USERLIST
       string SignUpQuery = "INSERT INTO public.UserList (username, email) VALUES(@UID, @eMail)";
       using NpgsqlCommand cmd = new(SignUpQuery, ConnectToDb());
-        cmd.Parameters.AddWithValue("@UID", UID);
-        cmd.Parameters.AddWithValue("@eMail", eMail);
-        cmd.ExecuteNonQuery();
-      }
-
+      cmd.Parameters.AddWithValue("@UID", UID);
+      cmd.Parameters.AddWithValue("@eMail", eMail);
+      cmd.ExecuteNonQuery();
     }
 
     private void UserPasswordSignUp(string UID, string Password)
@@ -47,8 +45,8 @@ namespace LancementLoginDB
       {
         cmd.Parameters.AddWithValue("@UID", UID);
         //TODO ADD FCT THAT HASH THE PASSWORD
-      /*  cmd.Parameters.AddWithValue("@Password", HashPASSWORD);
-        cmd.Parameters.AddWithValue("@Hash", GetHash ); */
+        /*  cmd.Parameters.AddWithValue("@Password", HashPASSWORD);
+          cmd.Parameters.AddWithValue("@Hash", GetHash ); */
       }
     }
 
@@ -56,11 +54,9 @@ namespace LancementLoginDB
     public void UserLogIn(string UID, string Password)
     {
       string SignInQuery = "SELECT * FROM public.usersList(username, password) WHERE username = '@UID' AND password = '@Password'";
-      using NpgsqlCommand cmd = new (SignInQuery, ConnectToDb());
-        cmd.Parameters.AddWithValue("@UID", UID);
-        cmd.Parameters.AddWithValue("@Password", Password);
-      }
+      using NpgsqlCommand cmd = new(SignInQuery, ConnectToDb());
+      cmd.Parameters.AddWithValue("@UID", UID);
+      cmd.Parameters.AddWithValue("@Password", Password);
     }
-
   }
 }
