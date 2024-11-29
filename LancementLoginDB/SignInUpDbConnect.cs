@@ -4,6 +4,23 @@ namespace LancementLoginDB
 {
   public class DBSignUpSignIn
   {
+
+
+    /* 
+     
+    Table 1 UserList (
+    serial id PK NOT NULL
+    username varachar(255) NOT NULL
+    email varchar(255) NOT NULL
+    )
+     
+    Table 2 PasswordList (
+    username varchar(255) NOT NULL PK
+    hashedpassword varchar(255) NOT NULL
+    salt varchar(255) NOT NULL
+    )
+     */
+
     public NpgsqlConnection ConnectToDb()
     {
       //Set TempUser + Password to DB
@@ -53,10 +70,13 @@ namespace LancementLoginDB
 
     public void UserLogIn(string UID, string Password)
     {
-      string SignInQuery = "SELECT * FROM public.usersList(username, password) WHERE username = '@UID' AND password = '@Password'";
+      string SignInQuery = "SELECT @UIE FROM public.usersList JOIN public.passwordlist ON public.userlist.username = public.passwordlist.username;";
       using NpgsqlCommand cmd = new(SignInQuery, ConnectToDb());
-      cmd.Parameters.AddWithValue("@UID", UID);
-      cmd.Parameters.AddWithValue("@Password", Password);
+      {
+        cmd.Parameters.AddWithValue("@UID", UID);
+      }
+      //TODO EXTRAPOLATE DATA FROM THE SELECT TO COMPARE HASHED PASSWORD WITH INPUT PASSWORD
+      //TODO LINK TO  FCT THAT HASH PASSWORD
     }
   }
 }
