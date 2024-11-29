@@ -1,4 +1,6 @@
 ﻿using Npgsql;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace LancementLoginDB
 {
@@ -57,26 +59,56 @@ namespace LancementLoginDB
 
     private void UserPasswordSignUp(string UID, string Password)
     {
-      string UserPasswordSignUp = "INSERT INTO public.PasswordList() VALUES()";
+      string UserPasswordSignUp = "INSERT INTO public.PasswordList(username, hashedpassword, salt ) VALUES(@UID, @Password, @Hash)";
+
+
+      var PwdResult = PasswordHash(Password);
       using (NpgsqlCommand cmd = new NpgsqlCommand(UserPasswordSignUp, ConnectToDb()))
       {
         cmd.Parameters.AddWithValue("@UID", UID);
-        //TODO ADD FCT THAT HASH THE PASSWORD
-        /*  cmd.Parameters.AddWithValue("@Password", HashPASSWORD);
-          cmd.Parameters.AddWithValue("@Hash", GetHash ); */
+        cmd.Parameters.AddWithValue("@Hash", PwdResult.Item1);
+        cmd.Parameters.AddWithValue("@Password",PwdResult.Item2 );
       }
     }
 
 
     public void UserLogIn(string UID, string Password)
     {
-      string SignInQuery = "SELECT @UIE FROM public.usersList JOIN public.passwordlist ON public.userlist.username = public.passwordlist.username;";
+      string SignInQuery = "SELECT @UID FROM public.usersList JOIN public.passwordlist ON public.userlist.username = public.passwordlist.username;";
       using NpgsqlCommand cmd = new(SignInQuery, ConnectToDb());
       {
         cmd.Parameters.AddWithValue("@UID", UID);
       }
       //TODO EXTRAPOLATE DATA FROM THE SELECT TO COMPARE HASHED PASSWORD WITH INPUT PASSWORD
       //TODO LINK TO  FCT THAT HASH PASSWORD
+    }
+
+    private (string, string) PasswordHash(string t_password)
+    {
+      string salt, FinalPassword;
+      //Step 1 Generate Salt
+      //Step 2 combine t_password + salt to get hashablepswd
+      //Step 3 Hash the password
+      //Step 4 Return the hashed password & the salt
+      using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+      {
+        byte[] randomBytes = new byte[16]; // Generate 16 random bytes
+        rng.GetBytes(randomBytes); //Salt
+        salt = BitConverter.ToString(randomBytes);
+      }
+
+      string HashPassword = t_password + salt;
+      byte[] SaltedPassword = Encoding.UTF8.GetBytes(HashPassword);
+
+      using (SHA256 sha256 = SHA256.Create())
+      {
+        {
+          byte[] hashByte = sha256.ComputeHash(SaltedPassword);
+          FinalPassword = Convert.ToHexString(hashByte);
+        }
+
+        return (salt, FinalPassword);
+      }
     }
   }
 }
