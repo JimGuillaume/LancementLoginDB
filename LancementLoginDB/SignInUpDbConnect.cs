@@ -146,5 +146,33 @@ namespace LancementLoginDB
         return (t_salt, FinalPassword);
       }
     }
+
+    private (string, string) PasswordHash(string t_password)
+    {
+      string salt, FinalPassword;
+      //Step 1 Generate Salt
+      //Step 2 combine t_password + salt to get hashablepswd
+      //Step 3 Hash the password
+      //Step 4 Return the hashed password & the salt
+      using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+      {
+        byte[] randomBytes = new byte[16]; // Generate 16 random bytes
+        rng.GetBytes(randomBytes); //Salt
+        salt = BitConverter.ToString(randomBytes);
+      }
+
+      string HashPassword = t_password + salt;
+      byte[] SaltedPassword = Encoding.UTF8.GetBytes(HashPassword);
+
+      using (SHA256 sha256 = SHA256.Create())
+      {
+        {
+          byte[] hashByte = sha256.ComputeHash(SaltedPassword);
+          FinalPassword = Convert.ToHexString(hashByte);
+        }
+
+        return (salt, FinalPassword);
+      }
+    }
   }
 }
